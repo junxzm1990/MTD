@@ -1,0 +1,11 @@
+MYFILE="file.txt"
+
+# read the file into a list of lines
+lines = open(MYFILE, 'r').readlines()
+
+# now edit the last line of the list of lines
+new_last_line = (lines[-1].rstrip() + ",90,100,50")
+lines[-1] = new_last_line
+
+# now write the modified list back out to the file
+open(MYFILE, 'w').writelines(lines),90,100,50

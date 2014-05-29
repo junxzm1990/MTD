@@ -1,0 +1,1 @@
+/home/klee/whole-program-llvm-master/wllvm     CMakeFiles/vt_aes.dir/test/vt_aes.c.o  -o vt_aes -rdynamic liboaes_lib.a 

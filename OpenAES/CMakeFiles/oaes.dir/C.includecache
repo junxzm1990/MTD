@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/klee/OpenAES-0.9.0/src/oaes.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+oaes_lib.h
+/home/klee/OpenAES-0.9.0/src/oaes_lib.h
+oaes_base64.h
+/home/klee/OpenAES-0.9.0/src/oaes_base64.h
+io.h
+-
+windows.h
+-
+process.h
+-
+pthread.h
+-
+
+inc/oaes_base64.h
+oaes_common.h
+-
+
+inc/oaes_common.h
+stdint.h
+-
+
+inc/oaes_lib.h
+oaes_common.h
+-
+
