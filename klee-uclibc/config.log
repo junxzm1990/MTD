@@ -1,0 +1,67 @@
+DEBUG:: main() at line 59 ::Executing with command line:
+./configure --make-llvm-lib
+
+INFO:: handleCommonOptions() at line 237 ::Disabling assertions
+INFO:: handleCommonOptions() at line 244 ::Configuring for Debug build
+INFO:: handleLLVMConfig() at line 346 ::Configuring for LLVM bitcode archive
+DEBUG:: runTool() at line 219 ::Executing ['which', 'llvm-config']
+DEBUG:: runTool() at line 228 ::Execution completed with return code:0
+DEBUG:: runTool() at line 229 ::Execution completed with output:"/usr/local/bin/llvm-config
+"
+INFO:: handleLLVMConfig() at line 357 ::Using llvm-config at.../usr/local/bin/llvm-config
+DEBUG:: runTool() at line 219 ::Executing [u'/usr/local/bin/llvm-config', '--bindir']
+DEBUG:: runTool() at line 228 ::Execution completed with return code:0
+DEBUG:: runTool() at line 229 ::Execution completed with output:"/usr/local/bin
+"
+INFO:: handleLLVMConfig() at line 374 ::Using llvm tool dir.../usr/local/bin
+INFO:: handleLLVMConfig() at line 390 ::Found "/usr/local/bin/llvm-objdump".
+INFO:: handleLLVMConfig() at line 390 ::Found "/usr/local/bin/llvm-link".
+INFO:: handleLLVMConfig() at line 390 ::Found "/usr/local/bin/llvm-ar".
+INFO:: handleLLVMConfig() at line 390 ::Found "/usr/local/bin/llvm-nm".
+INFO:: findBitCodeCompiler() at line 465 ::Searching for LLVM Bitcode compiler...
+DEBUG:: runTool() at line 219 ::Executing ['which', 'llvm-gcc']
+DEBUG:: runTool() at line 228 ::Execution completed with return code:0
+DEBUG:: runTool() at line 229 ::Execution completed with output:"/home/klee/llvm-gcc/bin//llvm-gcc
+"
+INFO:: findBitCodeCompiler() at line 481 ::Found llvm-gcc in PATH.../home/klee/llvm-gcc/bin//llvm-gcc
+INFO:: testBitCodeCompiler() at line 509 ::Testing LLVM Bitcode compiler.../home/klee/llvm-gcc/bin//llvm-gcc
+DEBUG:: runTool() at line 219 ::Executing [u'/home/klee/llvm-gcc/bin//llvm-gcc',
+ '-c',
+ '-g',
+ '-emit-llvm',
+ '/tmp/tmp1Y_XXv.c',
+ '-o',
+ '/tmp/tmpudpMDE.bc']
+DEBUG:: runTool() at line 228 ::Execution completed with return code:0
+DEBUG:: runTool() at line 229 ::Execution completed with output:""
+DEBUG:: testBitCodeCompiler() at line 553 ::/home/klee/llvm-gcc/bin//llvm-gcc succeeded
+DEBUG:: runTool() at line 219 ::Executing [u'/usr/local/bin/llvm-dis', '-o=/tmp/tmpU2roEd.ll', '/tmp/tmpudpMDE.bc']
+DEBUG:: runTool() at line 228 ::Execution completed with return code:0
+DEBUG:: runTool() at line 229 ::Execution completed with output:""
+INFO:: testBitCodeCompiler() at line 582 ::Compiler /home/klee/llvm-gcc/bin//llvm-gcc works
+INFO:: handleLLVMConfig() at line 410 ::Using LLVM Bitcode Compiler.../home/klee/llvm-gcc/bin//llvm-gcc
+WARNING:: determineHostCompiler() at line 269 ::Not using llvm-gcc to build host code.
+INFO:: checkForNCurses() at line 606 ::Checking for ncurses...
+DEBUG:: runTool() at line 219 ::Executing ['cc', '/tmp/tmpWourkg.c', '-lncurses', '-o', 'a.out']
+DEBUG:: runTool() at line 228 ::Execution completed with return code:0
+DEBUG:: runTool() at line 229 ::Execution completed with output:""
+DEBUG:: handleLLVMConfig() at line 419 ::Using template substitutions 
+{'ARCHIVER': 'llvm-ar',
+ 'ASSERTS': 'n',
+ 'CC': u'/home/klee/llvm-gcc/bin//llvm-gcc',
+ 'DEBUG': 'y',
+ 'EMIT_LLVM': '-emit-llvm',
+ 'HOSTCC': 'cc',
+ 'LINKER': 'llvm-link',
+ 'NM': 'llvm-nm',
+ 'OBJDUMP': 'llvm-objdump',
+ 'TOOLDIR': u'/usr/local/bin/'} 
+for file "/home/klee/klee-uclibc/Makefile.klee"
+INFO:: doTemplate() at line 436 ::Removing template destination "/home/klee/klee-uclibc/Makefile.klee"
+INFO:: doTemplate() at line 452 ::Writing templated file to "/home/klee/klee-uclibc/Makefile.klee"
+WARNING:: main() at line 132 ::Removing existing config file.../home/klee/klee-uclibc/.config
+INFO:: installPrebuiltConfig() at line 145 ::Setting up pre-made configure for...x86_64
+INFO:: installPrebuiltConfig() at line 159 ::Installing .config file
+INFO:: installPrebuiltConfig() at line 167 ::Looking for kernel include path...
+INFO:: installPrebuiltConfig() at line 169 ::Found "/usr/include"
+DEBUG:: installPrebuiltConfig() at line 175 ::Patching KERNEL_HEADERS with path "/usr/include"
