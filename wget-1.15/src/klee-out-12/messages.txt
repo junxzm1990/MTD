@@ -1,0 +1,2 @@
+KLEE: ERROR: /home/klee/klee-uclibc/libc/inet/socketcalls.c:203: inline assembly is unsupported
+KLEE: NOTE: now ignoring this error at this location

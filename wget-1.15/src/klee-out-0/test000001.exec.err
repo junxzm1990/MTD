@@ -1,0 +1,11 @@
+Error: inline assembly is unsupported
+Stack: 
+	#0 00000000 in select_fd (fd=10, maxtime=4651127699538968576, wait_for=2)
+	#1 00000000 in fd_write (fd=10, buf=107605008, bufsize=112, timeout=13830554455654793216)
+	#2 00000000 in request_send (req=107542432, fd=10, warc_tmp=0)
+	#3 00000000 in gethttp (u=107384544, hs=107383728, dt=106933888, proxy=0, iri=107245776, count=1)
+	#4 00000000 in http_loop (u=107384544, original_url=107384544, newloc=106973536, local_file=107209584, referer=0, dt=106933888, proxy=0, iri=107245776)
+	#5 00000000 in retrieve_url (orig_parsed=107384544, origurl=107132336, file=106925088, newloc=106931776, refurl=0, dt=106933888, recursive=false, iri=107245776, register_status=true)
+	#6 00000000 in __user_main (argc=2, argv=99181488)
+	#7 00085547 in __uClibc_main (main=54729952, argc=2, argv=99181488, app_init=0, app_fini=0, rtld_fini=0, stack_end=0) at /home/klee/klee-uclibc/libc/misc/internals/__uClibc_main.c:401
+	#8 00000000 in main (=2, =99181488)
