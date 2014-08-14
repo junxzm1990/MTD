@@ -1,4 +1,4 @@
-SET(CMAKE_C_COMPILER "/home/klee/whole-program-llvm-master/wllvm")
+SET(CMAKE_C_COMPILER "/home/llvm/git/whole-program-llvm/wllvm")
 SET(CMAKE_C_COMPILER_ARG1 "")
 SET(CMAKE_C_COMPILER_ID "GNU")
 SET(CMAKE_C_PLATFORM_ID "Linux")
@@ -38,4 +38,4 @@ ENDIF(CMAKE_C_COMPILER_ABI)
 SET(CMAKE_C_HAS_ISYSROOT "")
 
 SET(CMAKE_C_IMPLICIT_LINK_LIBRARIES "c")
-SET(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/usr/lib/gcc/x86_64-linux-gnu/4.4.3;/usr/lib;/lib;/usr/lib/x86_64-linux-gnu")
+SET(CMAKE_C_IMPLICIT_LINK_DIRECTORIES "/usr/lib/gcc/x86_64-linux-gnu/4.4.3;/usr/lib;/lib")

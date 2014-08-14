@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_C
-  "/home/klee/OpenAES-0.9.0/test/test_keys.c" "/home/klee/OpenAES-0.9.0/CMakeFiles/test_keys.dir/test/test_keys.c.o"
+  "/home/llvm/git/MTD/OpenAES/test/test_keys.c" "/home/llvm/git/MTD/OpenAES/CMakeFiles/test_keys.dir/test/test_keys.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "GNU")
 
@@ -15,5 +15,5 @@ SET(CMAKE_TARGET_DEFINITIONS
 
 # Targets to which this target links.
 SET(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/klee/OpenAES-0.9.0/CMakeFiles/oaes_lib.dir/DependInfo.cmake"
+  "/home/llvm/git/MTD/OpenAES/CMakeFiles/oaes_lib.dir/DependInfo.cmake"
   )

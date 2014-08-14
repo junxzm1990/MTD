@@ -1,6 +1,6 @@
 The system is: Linux - 2.6.32-21-generic - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /home/klee/whole-program-llvm-master/wllvm 
+Compiler: /home/llvm/git/whole-program-llvm/wllvm 
 Build flags: 
 Id flags: 
 
@@ -9,11 +9,11 @@ The output was:
 WARNING:Cannot attach bitcode path to "a.out"
 
 
-Compilation of the C compiler identification source "CMakeCCompilerId.c" produced ".a.out.bc"
-
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/klee/OpenAES-0.9.0/CMakeFiles/CompilerIdC/a.out"
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced ".a.out.bc"
+
+The C compiler identification is GNU, found in "/home/llvm/git/MTD/OpenAES/CMakeFiles/CompilerIdC/a.out"
 
 Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
 Compiler: /usr/bin/c++ 
@@ -28,35 +28,35 @@ CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant 
 
 Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
 
-The CXX compiler identification is GNU, found in "/home/klee/OpenAES-0.9.0/CMakeFiles/CompilerIdCXX/a.out"
+The CXX compiler identification is GNU, found in "/home/llvm/git/MTD/OpenAES/CMakeFiles/CompilerIdCXX/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp
+Change Dir: /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp
 
 Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
 /usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
-make[1]: Entering directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp/CMakeFiles 1
+make[1]: Entering directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp/CMakeFiles 1
 Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o
-/home/klee/whole-program-llvm-master/wllvm    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp/testCCompiler.c
+/home/llvm/git/whole-program-llvm/wllvm    -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o   -c /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp/testCCompiler.c
 Linking C executable cmTryCompileExec
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
-/home/klee/whole-program-llvm-master/wllvm        CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o  -o cmTryCompileExec -rdynamic 
-make[1]: Leaving directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp'
+/home/llvm/git/whole-program-llvm/wllvm        CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o  -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp
+Change Dir: /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp
 
 Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
 /usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
-make[1]: Entering directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp/CMakeFiles 1
+make[1]: Entering directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp/CMakeFiles 1
 Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o
-/home/klee/whole-program-llvm-master/wllvm    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+/home/llvm/git/whole-program-llvm/wllvm    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
 Linking C executable cmTryCompileExec
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
-/home/klee/whole-program-llvm-master/wllvm       -v CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec -rdynamic  
+/home/llvm/git/whole-program-llvm/wllvm       -v CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec -rdynamic  
 clang version 1.1 (branches/release_27)
 Target: x86_64-pc-linux-gnu
 Thread model: posix
@@ -67,25 +67,25 @@ Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.4.3-4ubuntu5.1'
 Thread model: posix
 gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5.1) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/:/usr/lib/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/
 COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-m64' '-o' 'cmTryCompileExec' '-mtune=generic'
- /usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=both -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec -z relro /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../.. -L/usr/lib/x86_64-linux-gnu CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crtn.o
-make[1]: Leaving directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp'
+ /usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=both -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec -z relro /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../.. CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crtn.o
+make[1]: Leaving directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp'
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp]
   ignore line: []
   ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec/fast"]
   ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build]
-  ignore line: [make[1]: Entering directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [make[1]: Entering directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp/CMakeFiles 1]
   ignore line: [Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/home/klee/whole-program-llvm-master/wllvm    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
+  ignore line: [/home/llvm/git/whole-program-llvm/wllvm    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c]
   ignore line: [Linking C executable cmTryCompileExec]
   ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1]
-  ignore line: [/home/klee/whole-program-llvm-master/wllvm       -v CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec -rdynamic  ]
+  ignore line: [/home/llvm/git/whole-program-llvm/wllvm       -v CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec -rdynamic  ]
   ignore line: [clang version 1.1 (branches/release_27)]
   ignore line: [Target: x86_64-pc-linux-gnu]
   ignore line: [Thread model: posix]
@@ -96,9 +96,9 @@ Parsed C implicit link information from above output:
   ignore line: [Thread model: posix]
   ignore line: [gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5.1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/:/usr/lib/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/]
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-m64' '-o' 'cmTryCompileExec' '-mtune=generic']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=both -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec -z relro /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../.. -L/usr/lib/x86_64-linux-gnu CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crtn.o]
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=both -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec -z relro /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../.. CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2] ==> ignore
     arg [--build-id] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
@@ -120,7 +120,6 @@ Parsed C implicit link information from above output:
     arg [-L/lib/../lib] ==> dir [/lib/../lib]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../..]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
@@ -143,33 +142,32 @@ Parsed C implicit link information from above output:
   collapse dir [/lib/../lib] ==> [/lib]
   collapse dir [/usr/lib/../lib] ==> [/usr/lib]
   collapse dir [/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../..] ==> [/usr/lib]
-  collapse dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
   implicit libs: [c]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/4.4.3;/usr/lib;/lib;/usr/lib/x86_64-linux-gnu]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/4.4.3;/usr/lib;/lib]
 
 
 Determining if the CXX compiler works passed with the following output:
-Change Dir: /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp
+Change Dir: /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp
 
 Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
 /usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
-make[1]: Entering directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp/CMakeFiles 1
+make[1]: Entering directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp/CMakeFiles 1
 Building CXX object CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o
-/usr/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o -c /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o -c /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
 Linking CXX executable cmTryCompileExec
 /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
 /usr/bin/c++         CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.cxx.o  -o cmTryCompileExec -rdynamic 
-make[1]: Leaving directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
-Change Dir: /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp
+Change Dir: /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp
 
 Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
 /usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
-make[1]: Entering directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp'
-/usr/bin/cmake -E cmake_progress_report /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp/CMakeFiles 1
+make[1]: Entering directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp/CMakeFiles 1
 Building CXX object CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o
 /usr/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
 Linking CXX executable cmTryCompileExec
@@ -181,20 +179,20 @@ Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.4.3-4ubuntu5.1'
 Thread model: posix
 gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5.1) 
 COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/
-LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/:/usr/lib/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/
 COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec' '-rdynamic' '-shared-libgcc' '-mtune=generic'
- /usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=both -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec -z relro /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../.. -L/usr/lib/x86_64-linux-gnu CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crtn.o
-make[1]: Leaving directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp'
+ /usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=both -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec -z relro /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../.. CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crtn.o
+make[1]: Leaving directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp'
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp]
   ignore line: []
   ignore line: [Run Build Command:/usr/bin/make "cmTryCompileExec/fast"]
   ignore line: [/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build]
-  ignore line: [make[1]: Entering directory `/home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp']
-  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/klee/OpenAES-0.9.0/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [make[1]: Entering directory `/home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp']
+  ignore line: [/usr/bin/cmake -E cmake_progress_report /home/llvm/git/MTD/OpenAES/CMakeFiles/CMakeTmp/CMakeFiles 1]
   ignore line: [Building CXX object CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o]
   ignore line: [/usr/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp]
   ignore line: [Linking CXX executable cmTryCompileExec]
@@ -206,9 +204,9 @@ Parsed CXX implicit link information from above output:
   ignore line: [Thread model: posix]
   ignore line: [gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5.1) ]
   ignore line: [COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/]
-  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/:/usr/lib/x86_64-linux-gnu/]
+  ignore line: [LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/]
   ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec' '-rdynamic' '-shared-libgcc' '-mtune=generic']
-  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=both -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec -z relro /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../.. -L/usr/lib/x86_64-linux-gnu CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crtn.o]
+  link line: [ /usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=both -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec -z relro /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../.. CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crtn.o]
     arg [/usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2] ==> ignore
     arg [--build-id] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
@@ -230,7 +228,6 @@ Parsed CXX implicit link information from above output:
     arg [-L/lib/../lib] ==> dir [/lib/../lib]
     arg [-L/usr/lib/../lib] ==> dir [/usr/lib/../lib]
     arg [-L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../..] ==> dir [/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../..]
-    arg [-L/usr/lib/x86_64-linux-gnu] ==> dir [/usr/lib/x86_64-linux-gnu]
     arg [CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
@@ -251,8 +248,7 @@ Parsed CXX implicit link information from above output:
   collapse dir [/lib/../lib] ==> [/lib]
   collapse dir [/usr/lib/../lib] ==> [/usr/lib]
   collapse dir [/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../..] ==> [/usr/lib]
-  collapse dir [/usr/lib/x86_64-linux-gnu] ==> [/usr/lib/x86_64-linux-gnu]
   implicit libs: [stdc++;m;c]
-  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/4.4.3;/usr/lib;/lib;/usr/lib/x86_64-linux-gnu]
+  implicit dirs: [/usr/lib/gcc/x86_64-linux-gnu/4.4.3;/usr/lib;/lib]
 
 

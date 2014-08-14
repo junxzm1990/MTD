@@ -35,8 +35,7 @@
 #include "klee.h"
 #include "oaes_lib.h"
 #define MODIFY
-#define BUF 32
-
+#define BUFHEAD 32
 
 void klee_make_symbolic(void *addr, size_t nbytes, const char *name) __attribute__((weak));
 
@@ -59,48 +58,20 @@ int main(int argc, char** argv)
 	OAES_CTX * ctx = NULL;
 	uint8_t *_encbuf, *_decbuf;
 	size_t _encbuf_len, _decbuf_len, _buf_len;
-	char *_buf;
 	short _is_ecb = 0;
-	//char _text[160];
 	char * _text = NULL;
 	int _key_len = 128;
-//	int BUF;
-
-//	klee_make_symbolic(&BUF, sizeof(int),"BUF" );
-
-/*
-	if(BUF<=32)
-	{
-		printf("less than or equal to 32\n");
-		return;
-
-	}
-
-	if(BUF>64)
-	{
-		printf("larger than 64\n");
-		return;
-	}
-
-	if(BUF>32&&BUF<=64)
-	{
-		printf("32 to 64\n");
-		return;
-	}
-
-*/
-
+        size_t file_data_len;
+	
 	if( argc < 2 )
 	{
 		usage( argv[0] );
+		printf("The arguments are too few\n");
 		return EXIT_FAILURE;
 	}
 
-
 	for( _i = 1; _i < argc; _i++ )
 	{
-
-		printf("The number of parameters is %d\n", argc);
 
 		int _found = 0;
 		
@@ -139,7 +110,6 @@ int main(int argc, char** argv)
 		if( 0 == _found )
 		{
 
-				printf("You have entered the middle of found\n");			
 //				memcpy(_text, argv[_i], 160);
 			if( _text )
 			{
@@ -152,15 +122,8 @@ int main(int argc, char** argv)
 			{
 				
 			#ifdef  MODIFY	
-	
-		
-				
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
 			uint8_t * file_buf;
-        		size_t file_data_len;
         		FILE * file_f = NULL;
 
 
@@ -177,10 +140,6 @@ int main(int argc, char** argv)
                		file_data_len = ftell(file_f);
                
 		
-		 	if(file_data_len>BUF)
-				return ;
-			
-
 
 			fseek(file_f, 0L, SEEK_SET);
                 	file_buf = (uint8_t *) calloc(file_data_len, sizeof(uint8_t));
@@ -193,34 +152,11 @@ int main(int argc, char** argv)
                 	fclose(file_f);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 		
-
+			_text = (char *) calloc(file_data_len, sizeof(char));
 				
-
-
-			_text = (char *) calloc(BUF, sizeof(char));
-			
-			
-				
-			if(file_data_len>BUF)
-			{
-		
-				return EXIT_FAILURE;
-				/*	
-				printf("You are almost at the termination point\n");
-				 memcpy(_text, file_buf, file_data_len*sizeof(char));
-		
-					 if(file_buf[file_data_len-1]==1)
-                        	{
-                                	printf("GOOD 0! You are HERE\n");
-                        	}
-			
-				*/
-			}
-
 	
-			  if(file_buf[BUF-1]==1)
+			  if(file_buf[BUFHEAD-1]==1)
 			{
 				printf("GOOD 0\n");
 			}
@@ -228,16 +164,12 @@ int main(int argc, char** argv)
 			else
 			{
 				 printf("THE HEADER INFO IS WRONG 1 \n");
-
                                          return OAES_RET_HEADER;
 			}
 
 
 			#endif
 					
-				
-
-
 				if( NULL == _text )
 				{
 					printf("Error: Failed to allocate memory.\n", argv[_i]);
@@ -245,24 +177,13 @@ int main(int argc, char** argv)
 				}
 
 
-				 memcpy(_text, file_buf, BUF*sizeof(char));
-
-/*				int ii=0;
-				for(ii=0;ii<BUF;ii++)
-					_text[ii]=argv[_i][ii];
-*/
-		//		memcpy( _text, argv, 32 );
-
-
-				printf("The length of _text is %d \n", strlen(_text));
-		//		memcpy(_text, argv[_i], 160);
+				 memcpy(_text, file_buf, file_data_len*sizeof(char));
 			}
 		}			
 	}
 
 	if( NULL == _text )
 	{
-
 		printf("The _test is still NULL\n");
 		usage( argv[0] );
 		return EXIT_FAILURE;
@@ -270,19 +191,6 @@ int main(int argc, char** argv)
 
 	oaes_sprintf( NULL, &_buf_len,
 			(const uint8_t *)_text, strlen( _text)  );
-	_buf = (char *) calloc(_buf_len, sizeof(char));
-//	printf( "\n***** plaintext  *****\n" );
-	if( _buf )
-	{
-		oaes_sprintf( _buf, &_buf_len,
-				(const uint8_t *)_text, strlen( _text) );
-
-//		printf("The length of the content is %d, %d\n", _buf_len, strlen(_text) );
-//		printf( "The content of text is %s \n", _buf );
-	}
-//	printf( "\n++++++++++++++++++++++++++++++You have go back to the beginning+++++++++++++++++++++++++++++\n" );
-
-	free( _buf );
 	
 	ctx = oaes_alloc();
 	if( NULL == ctx )
@@ -297,12 +205,6 @@ int main(int argc, char** argv)
 	switch( _key_len )
 	{
 		case 128:
-
-		//		char abc[128];
-		//		char xyz[128];
-
-//			if( OAES_RET_SUCCESS != oaes_key_gen_128(ctx) )
-
 				if(import_key_file("key_128" , ctx)==1)
 
 				printf("Error: Failed to generate OAES %d bit key.\n", _key_len);
@@ -319,95 +221,14 @@ int main(int argc, char** argv)
 			break;
 	}
 
-//printf("every thing is OK until key importing\n");
-
-
-#ifdef ORIGIN
-
-	if( OAES_RET_SUCCESS != oaes_encrypt( ctx,
-			(const uint8_t *)_text, strlen( _text ), NULL, &_encbuf_len ) )
-		printf("Error: Failed to retrieve required buffer size for encryption.\n");
-	_encbuf = (uint8_t *) calloc( _encbuf_len, sizeof(uint8_t) );
-	if( NULL == _encbuf )
-	{
-		printf( "Error: Failed to allocate memory.\n" );
-	//	free( _text );
-		return EXIT_FAILURE;
-	}
-	if( OAES_RET_SUCCESS != oaes_encrypt( ctx,
-			(const uint8_t *)_text, strlen( _text ), _encbuf, &_encbuf_len ) )
-		printf("Error: Encryption failed.\n");
-
-
-
-
-	if( OAES_RET_SUCCESS != oaes_decrypt( ctx,
-			_encbuf, _encbuf_len, NULL, &_decbuf_len ) )
-		printf("Error: Failed to retrieve required buffer size for encryption.\n");
-	_decbuf = (uint8_t *) calloc( _decbuf_len, sizeof(uint8_t) );
-	if( NULL == _decbuf )
-	{
-		printf( "Error: Failed to allocate memory.\n" );
-	//	free( _text );
-		free( _encbuf );
-		return EXIT_FAILURE;
-	}
-	if( OAES_RET_SUCCESS != oaes_decrypt( ctx,
-			_encbuf, _encbuf_len, _decbuf, &_decbuf_len ) )
-		printf("Error: Decryption failed.\n");
-
-
-	if( OAES_RET_SUCCESS !=  oaes_free( &ctx ) )
-		printf("Error: Failed to uninitialize OAES.\n");
-	
-	oaes_sprintf( NULL, &_buf_len, _encbuf, _encbuf_len );
-	_buf = (char *) calloc(_buf_len, sizeof(char));
-	printf( "\n***** cyphertext *****\n" );
-	if( _buf )
-	{
-		oaes_sprintf( _buf, &_buf_len, _encbuf, _encbuf_len );
-		printf( "%s", _buf );
-	}
-	printf( "\n**********************\n" );
-	free( _buf );
-	
-	oaes_sprintf( NULL, &_buf_len, _decbuf, _decbuf_len );
-	_buf = (char *) calloc(_buf_len, sizeof( char));
-	printf( "\n***** plaintext  *****\n" );
-	if( _buf )
-	{
-		oaes_sprintf( _buf, &_buf_len, _decbuf, _decbuf_len );
-		printf( "%s", _buf );
-	}
-
-	printf( "\n**********************\n\n" );
-	free( _buf );
-	
-	free( _encbuf );
-	free( _decbuf );
-	free( _text );
-
-	return (EXIT_SUCCESS);
-
-#endif
-
-
-
 
 
 #ifdef MODIFY
 
 
 
-//printf(">>>>>>>>>>>>    %d         >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n",strlen( _text));
-
-
-//	if(strlen( _text)<=32)
-//		return;
-
-
 	if( OAES_RET_SUCCESS != oaes_decrypt( ctx,
-			(const uint8_t *)_text, BUF, NULL, &_decbuf_len ) )
+			(const uint8_t *)_text, file_data_len, NULL, &_decbuf_len ) )
 	{
 
 		printf("Error: Failed to retrieve required buffer size for encryption.\n");
@@ -417,57 +238,41 @@ int main(int argc, char** argv)
 
 	_decbuf = (uint8_t *) calloc( _decbuf_len, sizeof(uint8_t) );
 
-
-
-
-	printf("Congratulations!@@@@@@@@@@@@@@@@@@@\n");
+	printf("Congratulations! The header is correct\n");
 
 	if( NULL == _decbuf )
 	{
 	
-//		printf("You have reached the error of the first decryption\n");
 		printf( "Error: Failed to allocate memory.\n" );
 		free( _text );
-//		free( _encbuf );
 		return EXIT_FAILURE;
 	}
+
 	if( OAES_RET_SUCCESS != oaes_decrypt( ctx,
-			(const uint8_t *)_text , BUF, _decbuf, &_decbuf_len ) )
+			(const uint8_t *)_text , file_data_len, _decbuf, &_decbuf_len ) )
 		printf("Error: Decryption failed.\n");
-
-
 
 	if( OAES_RET_SUCCESS !=  oaes_free( &ctx ) )
 		printf("Error: Failed to uninitialize OAES.\n");
 	
-	oaes_sprintf( NULL, &_buf_len, _text, strlen( _text) );
-	_buf = (char *) calloc(_buf_len, sizeof(char));
+	oaes_sprintf( NULL, &_buf_len, _text, file_data_len );
+
 	printf( "\n***** cyphertext *****\n" );
-	if( _buf )
-	{
-		oaes_sprintf( _buf, &_buf_len, _text, strlen( _text) );
-		printf( "%s", _buf );
-	}
+
 	printf( "\n**********cyphertext printed************\n" );
-	free( _buf );
+
 	
 	oaes_sprintf( NULL, &_buf_len, _decbuf, _decbuf_len );
-	_buf = (char *) calloc(_buf_len, sizeof( char));
-	printf( "\n***** plaintext  *****\n" );
-	if( _buf )
-	{
-		oaes_sprintf( _buf, &_buf_len, _decbuf, _decbuf_len );
-		printf( "%s", _buf );
-	}
 
+
+	printf( "\n***** plaintext  *****\n" );
 
 	printf( "\n********plaintext printed**************\n\n" );
-	free( _buf );
 	
 //:x	free( _encbuf );
 	free( _decbuf );
 	free( _text );
 
-	return (EXIT_SUCCESS);
+	return (EXIT_FAILURE);
 #endif
 }

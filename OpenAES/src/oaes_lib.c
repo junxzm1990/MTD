@@ -1132,16 +1132,12 @@ static OAES_RET oaes_decrypt_block(
 		_ctx->step_cb( c, "iinput", _ctx->key->num_keys - 1, NULL );
 #endif // OAES_DEBUG
 
-	// AddRoundKey(state, w[Nr*Nb, (Nr+1)*Nb-1])
-
-	printf("This is the first block thing\n");
 
 	for( _i = 0; _i < c_len; _i++ )
 		c[_i] = c[_i] ^ _ctx->key->exp_data[
 				( _ctx->key->num_keys - 1 ) * OAES_RKEY_LEN * OAES_COL_LEN + _i ];
 
 
-	printf("This is the second block thing\n");
 #ifdef OAES_DEBUG
 	if( _ctx->step_cb )
 	{
@@ -1154,7 +1150,9 @@ static OAES_RET oaes_decrypt_block(
 
 	for( _i = _ctx->key->num_keys - 2; _i > 0; _i-- )
 	{
-		// InvShiftRows(state)
+	
+		printf("You are in the number %d iteration of byte decryption\n",_i);
+
 		oaes_inv_shift_rows( c );
 
 #ifdef OAES_DEBUG
@@ -1177,7 +1175,6 @@ static OAES_RET oaes_decrypt_block(
 					_ctx->key->exp_data[_i * OAES_RKEY_LEN * OAES_COL_LEN + _j];
 		
 
-printf("This is the third block thing\n");
 #ifdef OAES_DEBUG
 	if( _ctx->step_cb )
 	{
@@ -1203,7 +1200,6 @@ printf("This is the third block thing\n");
 	// InvShiftRows(state)
 	oaes_inv_shift_rows( c );
 
-printf("This is the fourth block thing\n");
 
 
 
@@ -1212,7 +1208,6 @@ printf("This is the fourth block thing\n");
 		_ctx->step_cb( c, "is_row", 1, NULL );
 #endif // OAES_DEBUG
 
-printf("This is the fifth block thing\n");
 
 	// InvSubBytes(state)
 	for( _i = 0; _i < c_len; _i++ )
@@ -1227,7 +1222,6 @@ printf("This is the fifth block thing\n");
 	for( _i = 0; _i < c_len; _i++ )
 		c[_i] = c[_i] ^ _ctx->key->exp_data[_i];
 	
-printf("This is the sixth block thing\n");
 
 #ifdef OAES_DEBUG
 	if( _ctx->step_cb )
@@ -1237,6 +1231,7 @@ printf("This is the sixth block thing\n");
 	}
 #endif // OAES_DEBUG
 
+	printf("finishment of one block decryption\n");
 	return OAES_RET_SUCCESS;
 }
 
@@ -1374,39 +1369,7 @@ OAES_RET oaes_decrypt( OAES_CTX * ctx,
 		printf("There is no key\n");
 		return OAES_RET_NOKEY;
 	}
-	// options
 	
-
-/*	
-
-
-	if(c[6]==1)
-	{
-		printf("GOOD 1\n");
-	}	
-	else
-	{
-		printf("THE HEADER INFO IS WRONG 1 \n");
-
-		return OAES_RET_HEADER;
-	}
-
-	if(c[7]==0)
-	{
-		 printf("GOOD 2 \n");
-
-               // return OAES_RET_HEADER;
-	}	
-
-	else	
-	{
-		
-                printf("THE HEADER INFO IS WRONG 2 \n");
-
-                return OAES_RET_HEADER;
-	}
-	
-*/		
 
 
 	memcpy(&_options, c + 6, sizeof(_options));
@@ -1420,20 +1383,10 @@ OAES_RET oaes_decrypt( OAES_CTX * ctx,
 #endif // OAES_DEBUG
 			) ))
 	{
-
 		printf("The header is wrong 1\n");
-
 		return OAES_RET_HEADER;
 	}
 	
-
-	else
-	{
-		
-		printf("This is the GOOD one!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-	}
-
-
 
 	if( ( _options & OAES_OPTION_ECB ) &&
 			( _options & OAES_OPTION_CBC ) )
@@ -1441,33 +1394,13 @@ OAES_RET oaes_decrypt( OAES_CTX * ctx,
 		printf("The hear is wrong 2\n");
 		return OAES_RET_HEADER;
 	}
-	else
-	{
-		
-		printf("This is the GOOD two!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-
-	}
 
 	if( _options == OAES_OPTION_NONE )
 	{
 		printf("The header is wrong 3\n");
 		return OAES_RET_HEADER;
 	}
-	else
-	{	
-		
-		printf("This is the GOOD three!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-	}
 
-	// flags
-
-/*	if(c[8]>1)
-	{
-		 printf("THE HEADER INFO IS WRONG 3 \n");
-
-                return OAES_RET_HEADER;
-	}
-*/
 	memcpy(&_flags, c + 8, sizeof(_flags));
 	// validate that all flags are valid
 	if( _flags & ~(
@@ -1479,12 +1412,10 @@ OAES_RET oaes_decrypt( OAES_CTX * ctx,
 		}
 	else
 	{
-		
-		printf("This is the GOOD Four!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
-
+		printf("Everything is good right now\n");
 	}
 
-
+	
 	// iv
 	memcpy( _iv, c + OAES_BLOCK_SIZE, OAES_BLOCK_SIZE);
 	// data + pad
@@ -1493,26 +1424,21 @@ OAES_RET oaes_decrypt( OAES_CTX * ctx,
 
 		printf("THis is the first THING\n");
 	
- return OAES_RET_SUCCESS;
 
 	for( _i = 0; _i < *m_len; _i += OAES_BLOCK_SIZE )
 	{
-		printf("This is the second thing\n");
 
 		if( ( _options & OAES_OPTION_CBC ) && _i > 0 )
 		{
-			printf("YOU are in the middle of GOOD 4\n");
-
 			memcpy( _iv, c + OAES_BLOCK_SIZE + _i, OAES_BLOCK_SIZE );
 		}
-
-		printf("This is the third thing\n");
 
 		_rc = _rc ||
 				oaes_decrypt_block( ctx, m + _i, min( *m_len - _i, OAES_BLOCK_SIZE ) );
 		
-		
-		printf("This is the fourth thins\n");
+	
+		printf("You are in the number %d iteration of block decryption\n",_i);
+	
 		// CBC
 		if( _options & OAES_OPTION_CBC )
 		{
@@ -1520,25 +1446,10 @@ OAES_RET oaes_decrypt( OAES_CTX * ctx,
 				m[ _i + _j ] = m[ _i + _j ] ^ _iv[_j];
 		}
 	}
-	
 	// remove pad
 	if( _flags & OAES_FLAG_PAD )
 	{
-		int _is_pad = 1;
-		size_t _temp = (size_t) m[*m_len - 1];
-
-		if( _temp  <= 0x00 || _temp > 0x0f )
-			return OAES_RET_HEADER;
-		for( _i = 0; _i < _temp; _i++ )
-			if( m[*m_len - 1 - _i] != _temp - _i )
-				_is_pad = 0;
-		if( _is_pad )
-		{
-			memset( m + *m_len - _temp, 0, _temp );
-			*m_len -= _temp;
-		}
-		else
-			return OAES_RET_HEADER;
+		printf("You are in the padding section\n");
 	}
 	
 	return OAES_RET_SUCCESS;
