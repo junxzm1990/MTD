@@ -2000,26 +2000,15 @@ alarm_cancel (void)
 bool
 run_with_timeout (double timeout, void (*fun) (void *), void *arg)
 {
-
-
-printf("This is the separation 1.06\n");
   int saved_errno;
 
   if (timeout == 0)
     {
-
-  
       fun (arg);
       return false;
     }
 
-	
-printf("The is the internal separation 1.1\n");	
-
   signal (SIGALRM, abort_run_with_timeout);
-
-	
-printf("The is the internal separation 1.2\n");	
   if (SETJMP (run_with_timeout_env) != 0)
     {
       /* Longjumped out of FUN with a timeout. */
@@ -2027,8 +2016,6 @@ printf("The is the internal separation 1.2\n");
       return true;
     }
   alarm_set (timeout);
-	
-printf("The is the internal separation 2\n");	
   fun (arg);
 
   /* Preserve errno in case alarm() or signal() modifies it. */
