@@ -1,2 +1,0 @@
-KLEE: ERROR: /home/klee/klee/runtime/POSIX/klee_init_env.c:24: --sym-args expects three integer arguments <min-argvs> <max-argvs> <max-len>
-KLEE: NOTE: now ignoring this error at this location
