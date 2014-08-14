@@ -1,0 +1,15 @@
+Error: inline assembly is unsupported
+File: /home/klee/klee-uclibc/libc/inet/socketcalls.c
+Line: 203
+assembly.ll line: 106284
+Stack: 
+	#0 00106284 in __libc_recvfrom (sockfd=10, buffer=87664480, len=511, flags=2, to=0, tolen=0) at /home/klee/klee-uclibc/libc/inet/socketcalls.c:203
+	#1 00092345 in __libc_recv (sockfd=10, buffer=87664480, len=511, flags=2) at /home/klee/klee-uclibc/libc/inet/socketcalls.c:191
+	#2 00000000 in fd_peek (fd=10, buf=87664480, bufsize=511, timeout=13830554455654793216)
+	#3 00000000 in fd_read_hunk (fd=10, terminator=34096864, sizehint=512, maxsize=65536)
+	#4 00000000 in gethttp (u=86820880, hs=86879152, dt=86653024, proxy=0, iri=86694832, count=1)
+	#5 00000000 in http_loop (u=86820880, original_url=86820880, newloc=86539696, local_file=86602416, referer=0, dt=86653024, proxy=0, iri=86694832)
+	#6 00000000 in retrieve_url (orig_parsed=86820880, origurl=86613728, file=86415344, newloc=86432064, refurl=0, dt=86653024, recursive=false, iri=86694832, register_status=true)
+	#7 00000000 in __user_main (argc=2, argv=78660736)
+	#8 00085545 in __uClibc_main (main=34111424, argc=2, argv=78660736, app_init=0, app_fini=0, rtld_fini=0, stack_end=0) at /home/klee/klee-uclibc/libc/misc/internals/__uClibc_main.c:401
+	#9 00000000 in main (=2, =78660736)

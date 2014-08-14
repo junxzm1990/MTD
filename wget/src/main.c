@@ -1630,6 +1630,8 @@ outputting to a regular file.\n"));
             }
           else
           {
+
+		printf("find retrievel 1\n");
             retrieve_url (url_parsed, *t, &filename, &redirected_URL, NULL,
                           &dt, opt.recursive, iri, true);
           }
