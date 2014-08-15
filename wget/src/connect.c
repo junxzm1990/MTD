@@ -304,6 +304,7 @@ connect_to_ip (const ip_address *ip, int port, const char *print)
   /* Store the sockaddr info to SA.  */
   sockaddr_set_data (sa, ip, port);
 
+printf("The socket function reached!\n");
   /* Create the socket of the family appropriate for the address.  */
   sock = socket (sa->sa_family, SOCK_STREAM, 0);
   if (sock < 0)
@@ -676,13 +677,15 @@ retryable_socket_connect_error (int err)
 int
 select_fd (int fd, double maxtime, int wait_for)
 {
+
+printf("The line of select_fd is beginning\n");
   fd_set fdset;
   fd_set *rd = NULL, *wr = NULL;
   struct timeval tmout;
   int result;
 
-  FD_ZERO (&fdset);
-  FD_SET (fd, &fdset);
+//  FD_ZERO (&fdset);
+//  FD_SET (fd, &fdset);
   if (wait_for & WAIT_FOR_READ)
     rd = &fdset;
   if (wait_for & WAIT_FOR_WRITE)
@@ -690,7 +693,10 @@ select_fd (int fd, double maxtime, int wait_for)
 
   tmout.tv_sec = (long) maxtime;
   tmout.tv_usec = 1000000 * (maxtime - (long) maxtime);
+	
+printf("The line of select_fd is reached\n");
 
+#if 0
   do
   {
     result = select (fd + 1, rd, wr, NULL, &tmout);
@@ -701,7 +707,8 @@ select_fd (int fd, double maxtime, int wait_for)
 #endif
   }
   while (result < 0 && errno == EINTR);
-
+#endif
+  result=1;
   return result;
 }
 
@@ -931,13 +938,31 @@ int
 fd_peek (int fd, char *buf, int bufsize, double timeout)
 {
   struct transport_info *info;
+
+	printf(">>>>>>>>>>>>>>>>>>>This is the beginning of peek\n");
   LAZY_RETRIEVE_INFO (info);
+   
+	printf(">>>>>>>>>>>>>>>>>>>This is the second beginning of peek\n");
+
   if (!poll_internal (fd, info, WAIT_FOR_READ, timeout))
     return -1;
+ 	
+	printf(">>>>>>>>>>>>>>>>>>>This is the third beginning of peek\n");
+	
   if (info && info->imp->peeker)
-    return info->imp->peeker (fd, buf, bufsize, info->ctx);
-  else
+  {
+	 printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>This is inside the peek if\n");
+
+	  return info->imp->peeker (fd, buf, bufsize, info->ctx);
+	  printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>This is inside the peek if\n");
+  }
+	else
+   {
+	 printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>This is inside the peek else\n");
     return sock_peek (fd, buf, bufsize);
+   printf(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>This is inside the peek else\n"); 
+
+  }
 }
 
 /* Write the entire contents of BUF to FD.  If TIMEOUT is non-zero,
@@ -960,9 +985,17 @@ fd_write (int fd, char *buf, int bufsize, double timeout)
       if (!poll_internal (fd, info, WAIT_FOR_WRITE, timeout))
         return -1;
       if (info && info->imp->writer)
+	{
         res = info->imp->writer (fd, buf, bufsize, info->ctx);
-      else
-        res = sock_write (fd, buf, bufsize);
+	printf("write is inside if\n");     
+	}
+	 else
+	{
+
+		res=10;
+//        res = sock_write (fd, buf, bufsize);
+	printf("write is inside else\n");
+	}
       if (res <= 0)
         break;
       buf += res;

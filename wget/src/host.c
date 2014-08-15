@@ -323,7 +323,8 @@ static void
 gethostbyname_with_timeout_callback (void *arg)
 {
   struct ghbnwt_context *ctx = (struct ghbnwt_context *)arg;
-  ctx->hptr = gethostbyname (ctx->host_name);
+  	printf("The fifth separation\n!");
+	ctx->hptr = gethostbyname (ctx->host_name);
 }
 
 /* Just like gethostbyname, except it times out after TIMEOUT seconds.
@@ -381,7 +382,10 @@ static void
 getaddrinfo_with_timeout_callback (void *arg)
 {
   struct gaiwt_context *ctx = (struct gaiwt_context *)arg;
+	
+	printf("This is the first new separation\n");
   ctx->exit_code = getaddrinfo (ctx->node, ctx->service, ctx->hints, ctx->res);
+	printf("This is the second new separation");
 }
 
 /* Just like getaddrinfo, except it times out after TIMEOUT seconds.
@@ -398,6 +402,8 @@ getaddrinfo_with_timeout (const char *node, const char *service,
   ctx.service = service;
   ctx.hints = hints;
   ctx.res = res;
+
+printf("This is the internal separation 1\n");
 
   if (run_with_timeout (timeout, getaddrinfo_with_timeout_callback, &ctx))
     {
@@ -737,8 +743,12 @@ lookup_host (const char *host, int flags)
           xfree (name);
         }
 
+
+	printf("This is the separating symbol\n");
       logprintf (LOG_VERBOSE, _("Resolving %s... "),
                  quotearg_style (escape_quoting_style, str ? str : host));
+
+	printf("This is another separating symbol\n");
 
       if (str)
         xfree (str);
@@ -776,8 +786,17 @@ lookup_host (const char *host, int flags)
       }
 #endif
 
+printf("This is the third separation\n");
+
+printf("The first parameter is %s\n", host);
+
+
+
     err = getaddrinfo_with_timeout (host, NULL, &hints, &res, timeout);
-    if (err != 0 || res == NULL)
+   
+printf("This is the fourth separation\n");
+
+      if (err != 0 || res == NULL)
       {
         if (!silent)
           logprintf (LOG_VERBOSE, _("failed: %s.\n"),

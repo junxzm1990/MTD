@@ -142,8 +142,8 @@ posix_init (void)
       if (clocks[i].sysconf_name != NO_SYSCONF_CHECK)
         if (sysconf (clocks[i].sysconf_name) < 0)
           continue;             /* sysconf claims this clock is unavailable */
-      if (clock_getres (clocks[i].id, &r) < 0)
-        continue;               /* clock_getres doesn't work for this clock */
+    //  if (clock_getres (clocks[i].id, &r) < 0)
+      //  continue;               /* clock_getres doesn't work for this clock */
       posix_clock_id = clocks[i].id;
       posix_clock_resolution = (double) r.tv_sec + r.tv_nsec / 1e9;
       /* Guard against nonsense returned by a broken clock_getres.  */

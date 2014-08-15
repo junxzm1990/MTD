@@ -1017,6 +1017,7 @@ retrieve_from_file (const char *file, bool html, int *count)
       if (!opt.base_href)
         opt.base_href = xstrdup (url);
 
+	printf("find retreval 3\n");
       status = retrieve_url (url_parsed, url, &url_file, NULL, NULL, &dt,
                              false, iri, true);
       url_free (url_parsed);
@@ -1080,11 +1081,13 @@ retrieve_from_file (const char *file, bool html, int *count)
           opt.follow_ftp = old_follow_ftp;
         }
       else
+	{
+	printf("find retrieval 4\n");
         status = retrieve_url (parsed_url ? parsed_url : cur_url->url,
                                cur_url->url->url, &filename,
                                &new_file, NULL, &dt, opt.recursive, tmpiri,
                                true);
-
+	}
       if (parsed_url)
           url_free (parsed_url);
 
