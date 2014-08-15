@@ -1,3 +1,0 @@
-/home/klee/klee/Release+Asserts/bin/klee --libc=uclibc --posix-runtime --write-pcs --allow-external-sym-calls wget.bc --sym-arg 10
-PID: 3810
-Started: 2014-04-16 16:49:40

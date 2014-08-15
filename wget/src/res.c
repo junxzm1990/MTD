@@ -562,13 +562,9 @@ res_retrieve_file (const char *url, char **file, struct iri *iri)
     }
   else
     {
-
-	printf("find retrieval 2\n");
       err = retrieve_url (url_parsed, robots_url, file, NULL, NULL, NULL,
                           false, i, false);
-    
-		
-	  url_free(url_parsed);
+      url_free(url_parsed);
     }
 
   opt.timestamping = saved_ts_val;
