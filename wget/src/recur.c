@@ -276,8 +276,6 @@ retrieve_tree (struct url *start_url_parsed, struct iri *pi)
           int dt = 0, url_err;
           char *redirected = NULL;
           struct url *url_parsed = url_parse (url, &url_err, i, true);
-	
-	printf("find retrival 5\n");
 
           status = retrieve_url (url_parsed, url, &file, &redirected, referer,
                                  &dt, false, i, true);

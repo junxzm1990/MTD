@@ -87,10 +87,7 @@ parse_charset (char *str)
 char *
 find_locale (void)
 {
-
-	
- return "ANSI_X3.4-1968";
- // return (char *) stringprep_locale_charset ();
+  return (char *) stringprep_locale_charset ();
 }
 
 /* Basic check of an encoding name. */
@@ -242,13 +239,8 @@ idn_encode (struct iri *i, char *host)
 char *
 idn_decode (char *host)
 {
-/*
   char *new;
   int ret;
-  
-  printf("hello world 1 %s\n", host);
-
-  printf("the flag number is %d\n", IDNA_FLAGS);	
 
   ret = idna_to_unicode_8zlz (host, &new, IDNA_FLAGS);
   if (ret != IDNA_SUCCESS)
@@ -257,18 +249,6 @@ idn_decode (char *host)
                  quote (idna_strerror (ret)));
       return NULL;
     }
-	
-  printf("hello world 2 %s\n", new);
-*/
-
-
- char * new;
-
-new = (char *)malloc(strlen(host)+1);
-
-memcpy(new, host, strlen(host)*sizeof(char));
-
-new[strlen(host)]='\0';
 
   return new;
 }
