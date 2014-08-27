@@ -1,7 +1,7 @@
 make clean
 export PATH=/home/llvm/git/whole-program-llvm/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
 export LLVM_COMPILER=clang
-CC=wllvm ./configure
+CC=wllvm CFLAGS="-g" ./configure
 make 
 rm src/wget.bc
 extract-bc src/wget

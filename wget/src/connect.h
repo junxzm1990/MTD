@@ -37,6 +37,9 @@ as that of the covered work.  */
 /* Function declarations */
 
 /* Returned by connect_to_host when host name cannot be resolved.  */
+
+extern int __server_fd;
+
 enum {
   E_HOST = -100
 };
@@ -79,5 +82,5 @@ int fd_write (int, char *, int, double);
 int fd_peek (int, char *, int, double);
 const char *fd_errstr (int);
 void fd_close (int);
-
+int sym_server_accept(int client_fd);
 #endif /* CONNECT_H */

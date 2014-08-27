@@ -31,6 +31,9 @@ as that of the covered work.  */
 #ifndef HTTP_H
 #define HTTP_H
 
+#define STREAM_BUFFER_SIZE_WGET 4096
+
+
 struct url;
 
 uerr_t http_loop (struct url *, struct url *, char **, char **, const char *,
@@ -45,5 +48,5 @@ typedef struct {
 } param_token;
 bool extract_param (const char **, param_token *, param_token *, char);
 
-
+//int symbol_server_response(int fd);
 #endif /* HTTP_H */

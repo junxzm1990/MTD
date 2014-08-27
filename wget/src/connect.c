@@ -77,6 +77,22 @@ as that of the covered work.  */
    sockaddr_storage if ENABLE_IPV6 is defined, to struct sockaddr_in
    otherwise.  */
 
+
+
+int sym_server_accept(client_fd)
+{
+
+	struct sockaddr addr;
+	socklen_t  addrlen;
+  	//addr=(struct sockaddr*) malloc(sizeof(struct sockaddr));	
+
+	getsockname(client_fd, &addr, &addrlen);
+ 	return 	accept(__server_fd, &addr, &addrlen); 
+}
+
+
+
+
 static void
 sockaddr_set_data (struct sockaddr *sa, const ip_address *ip, int port)
 {
@@ -228,6 +244,9 @@ static void
 connect_with_timeout_callback (void *arg)
 {
   struct cwt_context *ctx = (struct cwt_context *)arg;
+
+ printf("The number of socket to be created is %d this is in the wget connect function\n",ctx->fd);
+
   ctx->result = connect (ctx->fd, ctx->addr, ctx->addrlen);
 }
 
@@ -262,15 +281,26 @@ connect_with_timeout (int fd, const struct sockaddr *addr, socklen_t addrlen,
 int
 connect_to_ip (const ip_address *ip, int port, const char *print)
 {
+
+
+	
+
   struct sockaddr_storage ss;
   struct sockaddr *sa = (struct sockaddr *)&ss;
   int sock;
+
+  printf("The text address is %s\n", print_address (ip));
+  printf("The port number is %d\n", port);	
 
   /* If PRINT is non-NULL, print the "Connecting to..." line, with
      PRINT being the host name we're connecting to.  */
   if (print)
     {
       const char *txt_addr = print_address (ip);
+
+	
+
+
       if (0 != strcmp (print, txt_addr))
         {
 				  char *str = NULL, *name;
@@ -305,7 +335,12 @@ connect_to_ip (const ip_address *ip, int port, const char *print)
   sockaddr_set_data (sa, ip, port);
 
   /* Create the socket of the family appropriate for the address.  */
-  sock = socket (sa->sa_family, SOCK_STREAM, 0);
+ 
+	printf("The number of domain is %d\n", sa->sa_family);
+  sock = socket (sa->sa_family, SOCK_STREAM, 0);//the o means the IP protocol, please refer to /etc/protocols
+	
+printf("222222222222222222222222222222222 The number of socket created is %d\n", sock);
+
   if (sock < 0)
     goto err;
 
@@ -345,6 +380,8 @@ connect_to_ip (const ip_address *ip, int port, const char *print)
       struct sockaddr *bind_sa = (struct sockaddr *)&bind_ss;
       if (resolve_bind_address (bind_sa))
         {
+		printf("You are in the opt.bind_address block to bind the client address\n");
+
           if (bind (sock, bind_sa, sockaddr_size (bind_sa)) < 0)
             goto err;
         }
@@ -353,10 +390,23 @@ connect_to_ip (const ip_address *ip, int port, const char *print)
   /* Connect the socket to the remote endpoint.  */
   if (connect_with_timeout (sock, sa, sockaddr_size (sa),
                             opt.connect_timeout) < 0)
-    goto err;
-
+	{
+		printf("!!!!!!!!!!!!!!!!!!!!!the connection process is not right@@@@@@@@@@@@@@@@@@@@@@@\n");
+		 goto err;
+	}
   /* Success. */
+ 
+
+
   assert (sock >= 0);
+
+	printf("The symbolic server will accept the connection request\n");
+
+	
+	__server_fd= sym_server_accept(sock);
+
+ printf("the socket number of the symbolic server is %d\n",__server_fd);
+
   if (print)
     logprintf (LOG_VERBOSE, _("connected.\n"));
   DEBUGP (("Created socket %d.\n", sock));
@@ -681,8 +731,18 @@ select_fd (int fd, double maxtime, int wait_for)
   struct timeval tmout;
   int result;
 
-  FD_ZERO (&fdset);
-  FD_SET (fd, &fdset);
+
+  printf("You are just in the select_fd function\n");
+
+  memset((char *)(&fdset), '\0', sizeof(*(&fdset)));
+
+  //FD_ZERO (&fdset);
+ 
+	((&fdset)->fds_bits[(fd)/NFDBITS] |= (1 << ((fd) % NFDBITS)));
+
+//	 FD_SET (fd, &fdset);
+	printf("YOu have passed the FD_ZERO and the FD_SET\n");
+
   if (wait_for & WAIT_FOR_READ)
     rd = &fdset;
   if (wait_for & WAIT_FOR_WRITE)
@@ -693,6 +753,8 @@ select_fd (int fd, double maxtime, int wait_for)
 
   do
   {
+   printf("You are before the select function$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n");
+
     result = select (fd + 1, rd, wr, NULL, &tmout);
 #ifdef WINDOWS
     /* gnulib select() converts blocking sockets to nonblocking in windows.
@@ -767,7 +829,12 @@ sock_write (int fd, char *buf, int bufsize)
 {
   int res;
   do
-    res = write (fd, buf, bufsize);
+	{
+    		res = write (fd, buf, bufsize);
+		//symbol_server_response(fd);	    
+
+	}
+
   while (res == -1 && errno == EINTR);
   return res;
 }
@@ -783,7 +850,14 @@ sock_peek (int fd, char *buf, int bufsize)
 {
   int res;
   do
+	{
+    printf("you are just before the recv function\n");
+
+	printf("the socker number for receiving message is %d\n", fd);
+
     res = recv (fd, buf, bufsize, MSG_PEEK);
+	}
+
   while (res == -1 && errno == EINTR);
   return res;
 }
@@ -882,18 +956,31 @@ poll_internal (int fd, struct transport_info *info, int wf, double timeout)
 {
   if (timeout == -1)
     timeout = opt.read_timeout;
+
+  printf("You are inside the poll_internal, between two if\n");
+	
   if (timeout)
     {
+	
+
       int test;
       if (info && info->imp->poller)
-        test = info->imp->poller (fd, timeout, wf, info->ctx);
-      else
-        test = sock_poll (fd, timeout, wf);
+	{ 
+		printf("you are in the imp->poller function\n");
+       		test = info->imp->poller (fd, timeout, wf, info->ctx);
+ 	}
+	 else
+	{
+		printf("you are in the sock_poll function\n");
+	        test = sock_poll (fd, timeout, wf);
+	}
       if (test == 0)
         errno = ETIMEDOUT;
       if (test <= 0)
         return false;
     }
+  printf("You have returned back from the sock_poll function\n");
+
   return true;
 }
 
@@ -948,6 +1035,13 @@ fd_peek (int fd, char *buf, int bufsize, double timeout)
 int
 fd_write (int fd, char *buf, int bufsize, double timeout)
 {
+
+
+	printf("You are inside the fd_write function\n");
+	printf("The content in the buffer is %s\n", buf);
+	printf("The size of the buffer is %d\n", bufsize);
+	printf("The amount of timeout is %lf\n", timeout);
+
   int res;
   struct transport_info *info;
   LAZY_RETRIEVE_INFO (info);
@@ -957,12 +1051,25 @@ fd_write (int fd, char *buf, int bufsize, double timeout)
   res = 0;
   while (bufsize > 0)
     {
+      printf("You are inside the poll_internal, and the fd number is %d\n ................................................ ", fd);
       if (!poll_internal (fd, info, WAIT_FOR_WRITE, timeout))
-        return -1;
-      if (info && info->imp->writer)
-        res = info->imp->writer (fd, buf, bufsize, info->ctx);
-      else
+    	{
+
+		printf("the poll_internal in the fd-write has a problem\n");
+	    return -1;
+    	}
+	  if (info && info->imp->writer)
+	{
+   		printf("You are inside the imp->writer process\n");
+	        res = info->imp->writer (fd, buf, bufsize, info->ctx);
+ 	}
+	  else
+	{
+	printf("You are right before the sock_write process and the socker number to be write is %d\n", fd);
         res = sock_write (fd, buf, bufsize);
+	printf("the number of bytes written into socket is %d\n", res);
+
+	}
       if (res <= 0)
         break;
       buf += res;
